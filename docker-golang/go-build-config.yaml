@@ -1,0 +1,101 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+  creationTimestamp: "2021-04-09T13:48:52Z"
+  labels:
+    app: greet
+    app.kubernetes.io/component: greet
+    app.kubernetes.io/instance: greet
+  managedFields:
+  - apiVersion: build.openshift.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:openshift.io/generated-by: {}
+        f:labels:
+          .: {}
+          f:app: {}
+          f:app.kubernetes.io/component: {}
+          f:app.kubernetes.io/instance: {}
+      f:spec:
+        f:output:
+          f:to:
+            .: {}
+            f:kind: {}
+            f:name: {}
+        f:runPolicy: {}
+        f:source:
+          f:contextDir: {}
+          f:git:
+            .: {}
+            f:ref: {}
+            f:uri: {}
+          f:type: {}
+        f:strategy:
+          f:sourceStrategy:
+            .: {}
+            f:from:
+              .: {}
+              f:kind: {}
+              f:name: {}
+              f:namespace: {}
+          f:type: {}
+    manager: oc
+    operation: Update
+    time: "2021-04-09T13:48:52Z"
+  - apiVersion: build.openshift.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:triggers: {}
+      f:status:
+        f:lastVersion: {}
+    manager: openshift-apiserver
+    operation: Update
+    time: "2021-04-09T13:48:52Z"
+  name: greet
+  namespace: esca-tran-singtel-com-custom-s2i
+  resourceVersion: "94064722"
+  selfLink: /apis/build.openshift.io/v1/namespaces/esca-tran-singtel-com-custom-s2i/buildconfigs/greet
+  uid: 73b394e3-053b-4c1c-9e65-e083dafa6447
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: greet:latest
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    contextDir: go-hello
+    git:
+      ref: custom-s2i
+      uri: https://github.com/escatran/DO288-apps
+    type: Git
+  strategy:
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: s2i-builder-go:latest
+        namespace: esca-tran-singtel-com-custom-s2i
+    type: Source
+  successfulBuildsHistoryLimit: 5
+  triggers:
+  - github:
+      secret: wENi5EJ8nyYNSRZNzh16
+    type: GitHub
+  - generic:
+      secret: F5lVW-72D1vusabndk5-
+    type: Generic
+  - type: ConfigChange
+  - imageChange:
+      lastTriggeredImageID: quay.io/escatran/s2i-builder-go@sha256:2f5cd228ef6df3d7c22954c4eb74bbd35588bf55f56edf7fb9fbbcf16cf5e6f1
+    type: ImageChange
+status:
+  lastVersion: 1
