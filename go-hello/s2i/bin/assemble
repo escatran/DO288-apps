@@ -17,4 +17,4 @@ echo "---> Installing application source..."
 cp -Rf /tmp/src/. /opt/app-root/
 
 echo "---> Building application from source..."
-go build app.go -lang es
+go build app.go --lang es
